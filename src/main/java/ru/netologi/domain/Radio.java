@@ -1,27 +1,40 @@
 package ru.netologi.domain;
 
 public class Radio {
-    private int minVolume = 0;
-    private int maxVolume = 10;
-    private int currentVolume;
-    private int currentStation;
-    private int maxStation = 9;
-    private int minStation = 0;
 
+    private int maxVolume;
+    private int minVolume;
+    private int currentVolume;
+    private int maxStation;
+    private int minStation;
+    private int currentStation;
+    private int stationNumber;
+
+
+    public Radio(int maxVolume, int minVolume, int maxStation, int minStation, int stationNumber) {
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.maxStation = maxStation;
+        this.minStation = minStation;
+        this.stationNumber = stationNumber;
+    }
+
+
+    public int getCurrentVolume() {
+        return currentVolume;
+
+    }
 
     public void setRangeVolume(int CurrentVolume) {
         this.currentVolume = CurrentVolume;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
     public void setIncreaseVolume() {
         if (currentVolume >= maxVolume) {
             return;
         }
-        this.currentVolume++; //= currentVolume + 1;
+        this.currentVolume++;
     }
 
     public void setVolumeReduction() {
@@ -31,7 +44,7 @@ public class Radio {
         this.currentVolume--;
     }
 
-
+    // Station
     public void setCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
             this.currentStation = maxStation;
@@ -43,6 +56,7 @@ public class Radio {
         }
         this.currentStation = currentStation;
     }
+
 
     public int getCurrentStation() {
         return currentStation;
@@ -65,5 +79,14 @@ public class Radio {
         }
     }
 
+    public void setStationNumber() {
+        this.stationNumber = currentStation++;
+    }
 
+    public int getStationNumber() {
+        return stationNumber;
+    }
 }
+
+
+

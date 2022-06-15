@@ -1,81 +1,79 @@
 package ru.netologi.domain;
 
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio receiver = new Radio();
+
 
     @Test
     public void setRangeVolumeMax() {
-
+        Radio receiver = new Radio();
         receiver.setRangeVolume(100);
 
         int actual = receiver.getCurrentVolume();
         int expected = 100;
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
     public void setRangeVolumeMin() {
-
+        Radio receiver = new Radio();
         int actual = receiver.getCurrentVolume();
         int expected = 0;
 
         Assertions.assertEquals(expected, actual);
-
     }
-
 
     @Test
     public void setIncreaseVolume() {
-
+        Radio receiver = new Radio();
         receiver.setRangeVolume(7);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 8;
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
     public void setIncreaseVolume2() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(99);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
     public void setIncreaseVolume3() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(100);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
     public void setIncreaseVolume4() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(101);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
 
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
     public void setVolumeReduction() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(2);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
@@ -85,6 +83,7 @@ public class RadioTest {
 
     @Test
     public void setVolumeReduction2() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(100);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
@@ -94,6 +93,7 @@ public class RadioTest {
 
     @Test
     public void setVolumeReduction3() {
+        Radio receiver = new Radio();
         receiver.setRangeVolume(0);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
@@ -141,7 +141,6 @@ public class RadioTest {
         int actual = receiver.getCurrentStation();
         int expected = 0;
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test
@@ -153,7 +152,6 @@ public class RadioTest {
         int actual = receiver.getCurrentStation();
         int expected = 0;
         Assertions.assertEquals(expected, actual);
-
     }
 
 
@@ -190,6 +188,7 @@ public class RadioTest {
 
     @Test
     public void setStationNumber() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(10);
         receiver.setStationNumber();
         int actual = receiver.getCurrentStation();

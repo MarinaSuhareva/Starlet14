@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio receiver = new Radio(100, 0, 9, 0, 10);
+    Radio receiver = new Radio();
 
     @Test
     public void setRangeVolumeMax() {
@@ -63,6 +63,16 @@ public class RadioTest {
 
     }
 
+    @Test
+    public void setIncreaseVolume4() {
+        receiver.setRangeVolume(101);
+        receiver.setVolumeReduction();
+        int actual = receiver.getCurrentVolume();
+        int expected = 100;
+
+        Assertions.assertEquals(expected, actual);
+
+    }
 
     @Test
     public void setVolumeReduction() {
@@ -90,10 +100,12 @@ public class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, actual);
     }
-
+// Station
 
     @Test
+
     public void setRadioСhannel1() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(-1);
         int actual = receiver.getCurrentStation();
         int expected = 0;
@@ -101,7 +113,9 @@ public class RadioTest {
     }
 
     @Test
+
     public void setRadioСhannel2() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(15);
         int actual = receiver.getCurrentStation();
         int expected = 9;
@@ -109,7 +123,9 @@ public class RadioTest {
     }
 
     @Test
+
     public void setRadioСhannel3() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(3);
         int actual = receiver.getCurrentStation();
         int expected = 3;
@@ -118,7 +134,8 @@ public class RadioTest {
 
     @Test
     public void setSwitchTheRadioStationMax() {
-        receiver.setCurrentStation(9);
+        Radio receiver = new Radio(10);
+        receiver.setCurrentStation(10);
         receiver.setNext();
 
         int actual = receiver.getCurrentStation();
@@ -128,7 +145,21 @@ public class RadioTest {
     }
 
     @Test
+    public void setSwitchTheRadioStationMax2() {
+        Radio receiver = new Radio(10);
+        receiver.setCurrentStation(9);
+        receiver.setNext();
+
+        int actual = receiver.getCurrentStation();
+        int expected = 0;
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+
+    @Test
     public void setSwitchTheRadioStationMin() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(-1);
         receiver.setPrev();
 
@@ -139,6 +170,7 @@ public class RadioTest {
 
     @Test
     public void setPreviousRadioStation() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(1);
         receiver.setPrev();
         int actual = receiver.getCurrentStation();
@@ -148,6 +180,7 @@ public class RadioTest {
 
     @Test
     public void setNextRadioStation() {
+        Radio receiver = new Radio(10);
         receiver.setCurrentStation(6);
         receiver.setNext();
         int actual = receiver.getCurrentStation();
@@ -157,20 +190,17 @@ public class RadioTest {
 
     @Test
     public void setStationNumber() {
-        receiver.setCurrentStation(9);
+        receiver.setCurrentStation(10);
         receiver.setStationNumber();
         int actual = receiver.getCurrentStation();
         int expected = 10;
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
-    public void StationNumber() {
-        receiver.getStationNumber();
-        receiver.setStationNumber();
-        int actual = receiver.getCurrentStation();
-        int expected = 1;
-        Assertions.assertEquals(expected, actual);
-    }
 
+    @Test
+    public void Station() {
+        Radio receiver = new Radio(10);
+        Assertions.assertEquals(10, receiver.getStationNumber());
+    }
 }

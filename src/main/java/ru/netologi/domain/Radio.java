@@ -1,27 +1,40 @@
 package ru.netologi.domain;
 
 public class Radio {
-    private int minVolume = 0;
-    private int maxVolume = 10;
+
+    private int maxVolume = 100;
     private int currentVolume;
+    private int minVolume;
     private int currentStation;
-    private int maxStation = 9;
-    private int minStation = 0;
+    private int stationNumber = 10;
+    private int minStation;
 
+    public Radio(int stationNumber) {
 
-    public void setRangeVolume(int CurrentVolume) {
-        this.currentVolume = CurrentVolume;
+        this.stationNumber = stationNumber;
+    }
+
+    public Radio() {
     }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
+    public int getStationNumber() {
+        return stationNumber;
+    }
+
+    public void setRangeVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
+    }
+
     public void setIncreaseVolume() {
         if (currentVolume >= maxVolume) {
+            this.currentVolume = maxVolume;
             return;
         }
-        this.currentVolume++; //= currentVolume + 1;
+        this.currentVolume++;
     }
 
     public void setVolumeReduction() {
@@ -31,14 +44,13 @@ public class Radio {
         this.currentVolume--;
     }
 
-
+    // Station
     public void setCurrentStation(int currentStation) {
-        if (currentStation > maxStation) {
-            this.currentStation = maxStation;
+        if (currentStation < minStation) {
             return;
         }
-        if (currentStation < minStation) {
-            this.currentStation = minStation;
+        if (currentStation > stationNumber - 1) {
+            this.currentStation = stationNumber - 1;
             return;
         }
         this.currentStation = currentStation;
@@ -49,7 +61,7 @@ public class Radio {
     }
 
     public void setNext() {
-        if (currentStation >= maxStation) {
+        if (currentStation == stationNumber - 1) {
             this.currentStation = minStation;
         } else {
             this.currentStation++;
@@ -57,13 +69,19 @@ public class Radio {
     }
 
     public void setPrev() {
-        if (currentStation <= minStation) {
-            this.currentStation = maxStation;
+        if (currentStation == minStation) {
+            this.currentStation = stationNumber - 1;
         } else {
             this.currentStation--;
-
         }
     }
 
+    public void setStationNumber() {
+        this.stationNumber = currentStation++;
+    }
 
 }
+
+
+
+

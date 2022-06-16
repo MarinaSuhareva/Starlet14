@@ -10,7 +10,7 @@ public class RadioTest {
     @Test
     public void setRangeVolumeMax() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(100);
+        receiver.setCurrentVolume(100);
 
         int actual = receiver.getCurrentVolume();
         int expected = 100;
@@ -30,7 +30,7 @@ public class RadioTest {
     @Test
     public void setIncreaseVolume() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(7);
+        receiver.setCurrentVolume(7);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 8;
@@ -41,7 +41,7 @@ public class RadioTest {
     @Test
     public void setIncreaseVolume2() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(99);
+        receiver.setCurrentVolume(99);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
@@ -52,7 +52,7 @@ public class RadioTest {
     @Test
     public void setIncreaseVolume3() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(100);
+        receiver.setCurrentVolume(100);
         receiver.setIncreaseVolume();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
@@ -63,7 +63,7 @@ public class RadioTest {
     @Test
     public void setIncreaseVolume4() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(101);
+        receiver.setCurrentVolume(101);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
         int expected = 100;
@@ -74,7 +74,7 @@ public class RadioTest {
     @Test
     public void setVolumeReduction() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(2);
+        receiver.setCurrentVolume(2);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
         int expected = 1;
@@ -84,7 +84,7 @@ public class RadioTest {
     @Test
     public void setVolumeReduction2() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(100);
+        receiver.setCurrentVolume(100);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
         int expected = 99;
@@ -94,7 +94,7 @@ public class RadioTest {
     @Test
     public void setVolumeReduction3() {
         Radio receiver = new Radio();
-        receiver.setRangeVolume(0);
+        receiver.setCurrentVolume(0);
         receiver.setVolumeReduction();
         int actual = receiver.getCurrentVolume();
         int expected = 0;
@@ -183,16 +183,6 @@ public class RadioTest {
         receiver.setNext();
         int actual = receiver.getCurrentStation();
         int expected = 7;
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationNumber() {
-        Radio receiver = new Radio(10);
-        receiver.setCurrentStation(10);
-        receiver.setStationNumber();
-        int actual = receiver.getCurrentStation();
-        int expected = 10;
         Assertions.assertEquals(expected, actual);
     }
 
